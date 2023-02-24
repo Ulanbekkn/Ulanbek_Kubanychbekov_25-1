@@ -17,3 +17,10 @@ class Products(models.Model):
 
     def __str__(self):
         return self.title
+
+class Review(models.Model):
+    text = models.CharField(max_length=255)
+    rate = models.IntegerField()
+    created_date = models.DateField(auto_now_add=True, null=True)
+    product = models.ForeignKey(Products, on_delete=models.CASCADE)
+

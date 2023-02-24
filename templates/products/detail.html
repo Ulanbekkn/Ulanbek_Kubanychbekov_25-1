@@ -1,0 +1,48 @@
+{% extends 'layouts/index.html' %}
+{% load static %}
+
+{% block content %}
+    <style type="text/css">
+        .product {
+            width: 80%;
+            margin-left: 10%;
+        }
+        .product > img {
+            width: 100%;
+        }
+        .dates {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+        .reviews {
+            margin-top: 20px;
+        }
+        .review_block {
+            padding: 10px;
+            background: #242b2e;
+            color: #fff;
+            margin-bottom: 20px ;
+        }
+    </style>
+    <div class="product">
+        {% if product.image %}
+            <img class="product_image" src="/media/{{ product.image }}" alt="">
+        {% else %}
+            <img class="product_image" src="/static/img_1.png" alt="">
+        {% endif %}
+        <h1>{{ product.title }}</h1>
+        <div class="dates">
+            <h6>{{ product.created_date }}</h6>
+            <h6>{{ product.modified_date }}</h6>
+        </div>
+        <div class="reviews">
+            {% for review in reviews %}
+                <div class="review_block">
+                    <h6>{{ review.text }}</h6>
+                    <h6>{{ review.created_date }}</h6>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
