@@ -24,6 +24,11 @@
             color: #fff;
             margin-bottom: 20px ;
         }
+        .review_title {
+            font-size: 20px;
+            margin-top: 40px;
+            font-weight: bold;
+        }
     </style>
     <div class="product">
         {% if product.image %}
@@ -36,6 +41,12 @@
             <h6>{{ product.created_date }}</h6>
             <h6>{{ product.modified_date }}</h6>
         </div>
+        <p class="review_title">Reviews</p>
+        <form action="/products/{{ product.id }}/" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Add review">
+        </form>
         <div class="reviews">
             {% for review in reviews %}
                 <div class="review_block">

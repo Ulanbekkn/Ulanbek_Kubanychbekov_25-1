@@ -1,10 +1,12 @@
 from django.db import models
 
+
 class Hashtag(models.Model):
     title = models.CharField(max_length=55)
 
     def __str__(self):
         return self.title
+
 
 class Products(models.Model):
     image = models.ImageField(blank=True, null=True)
@@ -17,6 +19,7 @@ class Products(models.Model):
 
     def __str__(self):
         return self.title
+
 
 class Review(models.Model):
     text = models.CharField(max_length=255)
