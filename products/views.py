@@ -3,7 +3,6 @@ from products.models import Products, Hashtag, Review
 from products.forms import ProductCreateForm, ReviewCreateForm
 
 
-
 def main_page_view(request):
     if request.method == 'GET':
         return render(request, 'layouts/index.html')
@@ -22,7 +21,8 @@ def products_view(request):
                     'phone_status': product.phone_status,
                     'hashtags': product.hashtags.all()
                 } for product in products
-            ]
+            ],
+            'user': request.user
         }
         return render(request, 'products/products.html', context=context)
 
